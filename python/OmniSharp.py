@@ -33,7 +33,11 @@ def getResponse(endPoint, additional_parameters=None, timeout=None):
 
     target = urlparse.urljoin(host, endPoint)
 
-    proxy = urllib2.ProxyHandler({})
+    proxy_setting = vim.eval('g:OmniSharp_proxy')
+    if proxy_setting == '':
+        proxy = urllib2.ProxyHandler({})
+    else:
+        proxy = urllib2.ProxyHandler({'http': proxy_setting})
     opener = urllib2.build_opener(proxy)
     req = urllib2.Request(target)
     req.add_header('Content-Type', 'application/json')

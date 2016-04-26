@@ -21,6 +21,7 @@ let g:OmniSharp_port = get(g:, 'OmniSharp_port', 2000)
 "Setup variable defaults
 "Default value for the server address
 let g:OmniSharp_host = get(g:, 'OmniSharp_host', 'http://localhost:' . g:OmniSharp_port)
+let g:OmniSharp_proxy = get(g:, 'OmniSharp_proxy', '')
 
 "Default value for the timeout value
 let g:OmniSharp_timeout = get(g:, 'OmniSharp_timeout', 1)

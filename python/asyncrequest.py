@@ -11,7 +11,11 @@ class ThreadUrl(threading.Thread):
 
     def run(self):
         try:
-            proxy = urllib2.ProxyHandler({})
+            proxy_setting = vim.eval('g:OmniSharp_proxy')
+            if proxy_setting == '':
+                proxy = urllib2.ProxyHandler({})
+            else:
+                proxy = urllib2.ProxyHandler({'http': proxy_setting})
             opener = urllib2.build_opener(proxy)
             response = opener.open(self.url, self.data, self.timeout)
             self.callback(response.read())
